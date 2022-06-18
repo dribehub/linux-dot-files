@@ -38,6 +38,7 @@ alias -g P="| pygmentize"
 alias -g N=">/dev/null 2>&1"
 alias -g Y="| xargs echo -n | xclip -selection c"
 alias -g Yn="| xclip -selection c"
+alias -g WC="| wc -l"
 
 # fun stuff
 alias        cv="cli --geometry 80x10+598+40 -x cava"
