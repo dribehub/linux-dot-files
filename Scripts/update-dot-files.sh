@@ -14,4 +14,5 @@ cp $HOME/Scripts/* Scripts
 
 git add .
 git commit -am "$1"
+git status
 git push
