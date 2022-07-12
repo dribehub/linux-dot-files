@@ -1,22 +1,29 @@
 #!/bin/zsh
 
 # general
-alias   aliases="$EDITOR $ZSHRC/aliases.zsh"
-alias      funx="$EDITOR $ZSHRC/functions.zsh"
-alias  funstuff="$EDITOR $ZSHRC/fun-stuff.zsh"
-alias     zshrc="$EDITOR $HOME/.zshrc"
-alias     vimrc="$EDITOR $HOME/.vimrc"
+alias         v="$EDITOR"
 alias      home="cd $HOME"
 alias      back="cdls .."
 alias       cat="bat -p --theme=ansi"
 alias       top="gotop"
 alias  yaystats="yay -Ps"
+alias   storage="df -h"
 alias    refnet="nmcli d connect wlp2s0 >/dev/null" # "nmcli c up EREMITI"
 alias scrotwind="scrot '$HOME/Desktop/%y-%m-%d-%H:%M:%S.png' -shole"
 alias    extend="xrandr --output eDP-1 --left-of HDMI-1"
 alias duplicate="xrandr --output eDP-1 --same-as HDMI-1"
 
+# vim shortcuts
+alias   aliases="$EDITOR $ZSHRC/aliases.zsh"
+alias      funx="$EDITOR $ZSHRC/functions.zsh"
+alias  funstuff="$EDITOR $ZSHRC/cli-commands.sh"
+alias     zshrc="$EDITOR $HOME/.zshrc"
+alias     vimrc="$EDITOR $HOME/.vimrc"
+alias awesomerc="$EDITOR $HOME/.config/awesome/rc.lua"
+alias polybarrc="$EDITOR $HOME/.config/polybar/config.ini"
+
 # default command options
+alias        rm="rm -i"
 alias       lsd="lsd --icon never" # -Al
 alias        ls="lsd" # ls --color=auto
 alias      list="ls -Al"
@@ -25,12 +32,14 @@ alias       cli="xfce4-terminal"
 alias        nf="neofetch-custom" # --backend off --col_offset 3
 alias    tormix="transmission-daemon && tormix"
 alias      ddgr="ddgr --colors mCmgxf --unsafe --noua -x"
+alias    wisdom="wisdom-tree"
 
 # global pipe options
 alias -g H="| head"
 alias -g T="| tail"
 alias -g S="| sort"
 alias -g G="| grep"
+alias -g Gi="| grep -i"
 alias -g L="| less"
 alias -g K="| lolcat"
 alias -g C="| cowsay"

@@ -21,6 +21,7 @@ let mapleader=","
 au BufReadPost *.qml set syntax=html
 au BufReadPost *.rasi set syntax=css
 au BufReadPost *.txt set foldmethod=indent
+au BufNewFile,BufRead *.txtmt setf mathdoc
 
 " Folding settings
 "set foldlevelstart=10 " open most folds by default
@@ -31,15 +32,17 @@ au BufReadPost *.txt set foldmethod=indent
 "autocmd BufWinEnter *.* silent loadview
 
 " Enable vim-julia-plugin on .txt files
-let latex_to_unicode_file_types = ["text"]
+" let latex_to_unicode_file_types = ["text"]
 
 " Configure jdhao/better-escape.vim
-" let g:better_escape_shortcut = 'jk'
-" let g:better_escape_interval = 150
+let g:better_escape_shortcut = ['jk', 'jj', 'kj']
+    " let g:better_escape_interval = 150
 
 " General keybindings
 nnoremap ; :
-nnoremap <CR> o<esc>k
+" nnoremap <CR> o<esc>k
+nnoremap <CR> i<CR><esc>k$
+vnoremap <CR> i<CR><esc>k$
 " inoremap jk <esc>
 
 " Leader keybindings
@@ -51,14 +54,17 @@ nmap <leader>` ysiw`
 nmap <leader>< bi<<esc>ea><esc>
 nmap <leader>div ysiw<div>
 
-" Create blocks of (), [], {}
-inoremap {{ {<CR>}<esc><<O
-inoremap [[ [<CR>]<esc><<O
-inoremap (( ()<esc>i
-inoremap << <><esc>i
-
 " Move between Vimdows
-nmap <space>k <C-w>k
-nmap <space>j <C-w>j
-nmap <space>h <C-w>h
-nmap <space>l <C-w>l
+nmap <space> <C-w>
+" nmap <space>h <C-w>h
+" nmap <space>j <C-w>j
+" nmap <space>k <C-w>k
+" nmap <space>l <C-w>l
+" nmap <space>H <C-w>H
+" nmap <space>J <C-w>J
+" nmap <space>K <C-w>K
+" nmap <space>L <C-w>L
+" nmap <up> <C-w>+
+" nmap <down> <C-w>-
+" nmap <left> <C-w><
+" nmap <right> <C-w>>

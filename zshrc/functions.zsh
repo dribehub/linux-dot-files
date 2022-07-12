@@ -11,6 +11,16 @@ rmcd () {; DIR_PATH=$(pwd) && cd -P .. && rm -r "$DIR_PATH" ;}
 #dl () {; transmission-cli -w /home/dribe/Videos $1 ;}
 #pwd () {; ls -Ald ${1-PWD} ;}
 wiki () {; ddg "\!w ${@}" ;}
+uc () {; echo "\u$1" && echo -ne "\u$1" | xclip -selection clipboard ;}
+
+yaylink () {
+    URL=$(yay -Si $1 | grep '^URL' | sed 's/.*: //')
+    if [ ! "$URL" ]; then
+        yay -Si $1
+    else
+        firefox $URL
+    fi
+}
 
 reddit () {
   URL="https://www.reddit.com/"

@@ -18,15 +18,40 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Keyboard map indicator and switcher
+mykeyboardlayout = awful.widget.keyboardlayout()
 
--- User defined functions
+-- Useless Gaps (overwrites /themes/dribe/theme.lua)
+-- beautiful.useless_gap = 15
+
+-- {{{ User defined functions
 function run(command) 
-    return function() awful.util.spawn(command) end
+    return function() awful.util.spawn(command) end end
+function info(desc, gr) 
+    return {["description"] = desc; ["group"] = gr} end
+function shell(command) 
+    awful.spawn.with_shell(command) end
+function async(command, func) 
+    awful.spawn.easy_async_with_shell(command, func) end
+
+function brightness(increment)
+    local get_level = "xrandr --verbose | grep Brightness | awk '{printf $NF}'"
+    return function() 
+        awful.spawn.easy_async_with_shell(get_level,
+            function(actual_brightness)
+                actual_brightness = tonumber(actual_brightness)
+                local command = "xrandr --output eDP-1 --brightness "
+                if (actual_brightness > 1) then 
+                    shell(command .. 1);
+                elseif (actual_brightness == 1 and increment > 0) then
+                    return
+                else 
+                    shell(command .. (actual_brightness + increment))
+                end
+            end)
+    end
 end
-
-function info(desc, gr) return {["description"] = desc; ["group"] = gr} end
-function shell(command) awful.spawn.with_shell(command) end
-
+--- }}}
 
 -- {{{ Error handling
     -- Check if awesome encountered an error during startup and fell back to
@@ -82,11 +107,11 @@ function shell(command) awful.spawn.with_shell(command) end
     awful.layout.layouts = {
         awful.layout.suit.tile,
         awful.layout.suit.floating,
+    --[[
         awful.layout.suit.fair,
         awful.layout.suit.spiral,
         awful.layout.suit.spiral.dwindle,
         awful.layout.suit.corner.nw,
-    --[[
         awful.layout.suit.tile.left,
         awful.layout.suit.tile.bottom,
         awful.layout.suit.tile.top,
@@ -124,9 +149,6 @@ function shell(command) awful.spawn.with_shell(command) end
     -- Menubar configuration
     menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
     -- Create a textclock widget
@@ -181,7 +203,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
         set_wallpaper(s)
 
         -- Each screen has its own tag table.
-        awful.tag({ " Main ", " Music ", " Code ", " Work ", " Extra " }, s, awful.layout.layouts[1])
+        awful.tag({ "", "", "", "", "" }, s, awful.layout.layouts[1])
 
         -- Create a promptbox for each screen
         s.mypromptbox = awful.widget.prompt()
@@ -209,7 +231,10 @@ mykeyboardlayout = awful.widget.keyboardlayout()
         }
 
         -- Create the wibox
-        s.mywibox = awful.wibar({ position = "top", screen = s })
+        s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
+
+        -- Add padding below Polybar
+        awful.screen.padding(screen[s], { top = 25 })
 
         -- Add widgets to the wibox
         s.mywibox:setup {
@@ -234,22 +259,21 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Mouse bindings
     root.buttons(gears.table.join(
-        awful.button({ }, 3, function() mymainmenu:toggle() end),
-        awful.button({ }, 4, awful.tag.viewnext),
-        awful.button({ }, 5, awful.tag.viewprev)
+        awful.button({ }, 3, function() mymainmenu:toggle() end)
+        -- awful.button({ }, 4, awful.tag.viewnext),
+        -- awful.button({ }, 5, awful.tag.viewprev)
     ))
 -- }}}
 
 -- {{{ Key bindings
     globalkeys = gears.table.join(
         awful.key({modkey, "Shift"}, "s", hotkeys_popup.show_help, info("show help", "awesome")),
-        awful.key({modkey}, "Left", awful.tag.viewprev, info("view previous", "tag")),
-        awful.key({modkey}, "Right", awful.tag.viewnext, info("view next", "tag")),
+        awful.key({modkey}, "Prior", awful.tag.viewprev, info("view previous", "tag")),
+        awful.key({modkey}, "Next", awful.tag.viewnext, info("view next", "tag")),
         awful.key({modkey}, "Escape", awful.tag.history.restore, info("go back", "tag")),
         
         awful.key({modkey}, "j", function() awful.client.focus.byidx( 1) end, info("focus next by index", "client")),
         awful.key({modkey}, "k", function() awful.client.focus.byidx(-1) end, info("focus previous by index", "client")),
-        awful.key({modkey}, "w", function() mymainmenu:show() end, info("show main menu", "awesome")),
 
         -- Layout manipulation
         awful.key({modkey, "Shift"}, "j", function() awful.client.swap.byidx(  1) end, info("swap with next client by index", "client")),
@@ -272,24 +296,19 @@ mykeyboardlayout = awful.widget.keyboardlayout()
         awful.key({}, "XF86AudioLowerVolume", run("pamixer -d 5")),
 
         -- Brightness
-        awful.key({}, "XF86MonBrightnessUp", function()
-            awful.spawn.easy_async_with_shell(
-                [[xrandr --verbose | grep Brightness | awk '{printf $NF}']],
-                function(actual_brightness)
-                    actual_brightness = tonumber(actual_brightness)
-                    awful.spawn.with_shell([[xrandr --output eDP-1 --brightness ]] .. actual_brightness + .05)
-                end)
-        end),
-        awful.key({}, "XF86MonBrightnessDown", function()
-            awful.spawn.easy_async_with_shell(
-                [[xrandr --verbose | grep Brightness | awk '{printf $NF}']],
-                function(actual_brightness)
-                    actual_brightness = tonumber(actual_brightness)
-                    awful.spawn.with_shell([[xrandr --output eDP-1 --brightness ]] .. actual_brightness - .05)
-                end)
-        end),
-        -- Screeshot
-        awful.key({modkey}, "s", run("xfce4-screenshooter -wc"), info("screenshot active window", "screenshot")),
+        awful.key({}, "XF86MonBrightnessUp", brightness(.05)),
+        awful.key({}, "XF86MonBrightnessDown", brightness(-.05)),
+
+        -- Network
+        awful.key({modkey, "Shift"}, "r", run("nmcli d connect wlp2s0"), info("reload network", "system")),
+
+        -- Task manager
+        awful.key({"Ctrl", "Mod1"}, "m", run("xfce4-taskmanager"), info("open task manager", "system")),
+
+        -- Screenshot
+        awful.key({}, "Print", run("xfce4-screenshooter -rc"), info("choose region", "screenshot")),
+        awful.key({"Shift"}, "Print", run("xfce4-screenshooter -wc"), info("active window", "screenshot")),
+        awful.key({modkey}, "s", run('scrot "/home/dribe/Desktop/%y-%m-%d-%H:%M:%S.png" -s'), info("select region and save", "screenshot")),
 
         -- Standard program
         awful.key({modkey}, "Return", function() awful.spawn(terminal) end, info("terminal", "launcher")),
@@ -305,7 +324,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
         awful.key({modkey}, ",", function() awful.layout.inc(1) end, info("select next", "layout")),
         awful.key({modkey}, ".", function() awful.layout.inc(-1) end, info("select previous", "layout")),
 
-        awful.key({modkey, "Control"}, "n",
+        awful.key({modkey, "Shift"}, "n",
                   function()
                       local c = awful.client.restore()
                       -- Focus restored client
@@ -318,26 +337,15 @@ mykeyboardlayout = awful.widget.keyboardlayout()
         -- Prompt
         awful.key({modkey}, "r", function() awful.screen.focused().mypromptbox:run() end, info("run", "launcher")),
         -- Lock
-        -- awful.key({modkey, "Shift"}, "\n", shell("i3-lock-fancy-rapid 10 5"), info("lock screen", "session")),
+        awful.key({modkey, "Control", "Shift"}, "l", run("i3lock-fancy-rapid 10 5"), info("lock screen", "system")),
         -- Rofi
         awful.key({modkey}, "space", run("rofi -show drun"), info("rofi", "launcher")),
          -- Thunar
         awful.key({modkey}, "e", run("thunar"), info("rofi", "launcher")),
          -- Firefox
         awful.key({modkey}, "b", run("firefox"), info("firefox", "launcher")),
-        -- Lua prompt
-        awful.key({modkey}, "x",
-              function()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              info("lua execute prompt", "awesome")),
-        -- Menubar
-        awful.key({modkey}, "p", function() menubar.show() end, info("menubar", "launcher"))
+         -- Telegram
+        awful.key({modkey}, "t", run("telegram-desktop"), info("telegram", "launcher"))
     )
 
     clientkeys = gears.table.join(
@@ -347,7 +355,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
                 c:raise()
             end,
             info("toggle fullscreen", "client")),
-        awful.key({modkey, "Shift"}, "c", function(c) c:kill() end, info("close", "client")),
+        awful.key({modkey}, "w", function(c) c:kill() end, info("close", "client")),
         awful.key({modkey, "Control"}, "space",  awful.client.floating.toggle, info("toggle floating", "client")),
         awful.key({modkey, "Control" }, "Return", function(c) c:swap(awful.client.getmaster()) end, info("move to master", "client")),
         awful.key({modkey}, "o", function(c) c:move_to_screen() end, info("move to screen", "client")),
@@ -495,6 +503,12 @@ mykeyboardlayout = awful.widget.keyboardlayout()
             properties = { titlebars_enabled = false }
         },
 
+        -- Remove Polybar Borders
+        -- { 
+        --     rule = { instance = "polybar" },
+        --     properties = { border_width = false }
+        -- },
+
         -- Set Firefox to always map on the tag named "2" on screen 1.
         --[[ {
             rule = { class = "Firefox" },
@@ -558,18 +572,24 @@ mykeyboardlayout = awful.widget.keyboardlayout()
         }
     end)
 
+    -- Rounded corners
+    client.connect_signal("manage", function (c)
+        c.shape = function(cr,w,h)
+            gears.shape.rounded_rect(cr,w,h,0)
+        end
+    end)
+
     -- Enable sloppy focus, so that focus follows mouse.
     -- client.connect_signal("mouse::enter", function(c) 
     --     c:emit_signal("request::activate", "mouse_enter", {raise = false}) end)
+    
     client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
     client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
---[[ Gaps ]]
-beautiful.useless_gap = 7
-
---[[ Autostart ]]
-shell("nitrogen --restore")
-shell("polybar")
--- shell("picom")
--- shell("~/scripts/init.sh")
+-- {{{ Autostart
+    shell("nitrogen --restore")
+    shell("polybar")
+--    shell("picom")
+--    shell("~/scripts/init.sh")
+-- }}}

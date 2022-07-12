@@ -6,4 +6,6 @@ source $ZSH/oh-my-zsh.sh
 source $ZSHRC/aliases.zsh                                                   
 source $ZSHRC/functions.zsh
 
-nf # cbonsai -p
+nf 
+# pfetch
+# cbonsai -p
