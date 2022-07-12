@@ -12,7 +12,7 @@ cp $HOME/.zshenv zshrc/.zshenv
 cp $HOME/Scripts/* Scripts
 #cp $ZSHRC/* zshrc
 
-git add .
-git commit -am "$1"
-git status
+git add . &&
+git commit -am "$1" &&
+git status &&
 git push
