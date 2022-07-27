@@ -4,11 +4,13 @@ pctg() {
     printf "%.2f" $(echo "$1 * 100 / $2" | bc -l)
 }
 
-echo 'Monster Statistics'
+DIR=$HOME/Videos/some-movie-series
 
-if [ -d $HOME/Desktop/monster ]; then
+echo '<some-movie-series> Statistics'
+
+if [ -d $DIR ]; then
     total=74
-    remaining=$(ls -A $HOME/Desktop/monster | wc -l)
+    remaining=$(ls -A $DIR | wc -l)
     remainingPctg=$(pctg $remaining $total)
     watched=$(( total - remaining ))
     watchedPctg=$(pctg $watched $total)
