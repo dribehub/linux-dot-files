@@ -20,6 +20,6 @@ cp $ZSHRC/functions.zsh zshrc/functions.zsh
 cp $HOME/Scripts/* Scripts
 
 git add . &&
-git commit -am "$1" &&
 git status &&
+git commit -am "$1" &&
 git push
