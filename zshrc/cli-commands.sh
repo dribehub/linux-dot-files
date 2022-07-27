@@ -5,7 +5,7 @@
 # Resource Monitor
     top htop gotop # bashtop
 # System Info Printer
-    neofetch cpufetch uwufetch pfetch comfetch
+    neofetch cpufetch uwufetch pfetch comfetch fm6000
 # Audio Visualizer
     cava
 # Radio Player

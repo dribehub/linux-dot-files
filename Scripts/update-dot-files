@@ -12,10 +12,9 @@ cp $HOME/.vimrc vim/.vimrc
 # zshrc
 cp $HOME/.zshrc zshrc/.zshrc
 cp $HOME/.zshenv zshrc/.zshenv
-echo $ZSHRC
-cp $ZSHRC/aliases.zsh zshrc/aliases.zsh
-cp $ZSHRC/cli-commands.sh zshrc/cli-commands.sh
-cp $ZSHRC/functions.zsh zshrc/functions.zsh
+cp $HOME/.zsh/aliases.zsh zshrc/aliases.zsh
+cp $HOME/.zsh/cli-commands.sh zshrc/cli-commands.sh
+cp $HOME/.zsh/functions.zsh zshrc/functions.zsh
 
 # scripts
 cp $HOME/Scripts/* Scripts
