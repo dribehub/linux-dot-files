@@ -6,4 +6,5 @@ PATH=$HOME/Scripts:$PATH
 PSQL_PAGER=pspg
 EDITOR="/usr/bin/nvim"
 TERMINAL="/usr/bin/xfce4-terminal"
+BROWSER="/usr/bin/firefox"
 WINDOWS="/run/media/dribe/Windows 10/Users/User/"

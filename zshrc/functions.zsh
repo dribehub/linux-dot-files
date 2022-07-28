@@ -18,7 +18,7 @@ yaylink () {
     if [ ! "$URL" ]; then
         yay -Si $1
     else
-        firefox $URL
+        $BROWSER $URL
     fi
 }
 
@@ -35,13 +35,13 @@ reddit () {
       URL="${URL}search/?q=${@}"
     fi
   fi
-  firefox "$URL"
+  $BROWSER "$URL"
 }
 
 ddg () {
   URL="https://www.duckduckgo.com/"
   [[ $1 ]] && URL="$URL""?q=${@}&ia=web"
-  firefox "$URL"
+  $BROWSER "$URL"
 }
 
 yaysort () {

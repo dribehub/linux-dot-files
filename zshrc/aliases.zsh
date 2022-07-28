@@ -19,6 +19,7 @@ alias      funx="$EDITOR $ZSHRC/functions.zsh"
 alias  funstuff="$EDITOR $ZSHRC/cli-commands.sh"
 alias     zshrc="$EDITOR $HOME/.zshrc"
 alias     vimrc="$EDITOR $HOME/.vimrc"
+alias    nvimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias awesomerc="$EDITOR $HOME/.config/awesome/rc.lua"
 alias polybarrc="$EDITOR $HOME/.config/polybar/config.ini"
 
@@ -28,7 +29,6 @@ alias       lsd="lsd --icon never" # -Al
 alias        ls="lsd" # ls --color=auto
 alias      list="ls -Al"
 alias      grep="grep --color=always"
-alias       cli="xfce4-terminal"
 alias        nf="neofetch-custom" # --backend off --col_offset 3
 alias    tormix="transmission-daemon && tormix"
 alias      ddgr="ddgr --colors mCmgxf --unsafe --noua -x"
@@ -50,11 +50,11 @@ alias -g Yn="| xclip -selection c"
 alias -g WC="| wc -l"
 
 # fun stuff
-alias        cv="cli --geometry 80x10+598+40 -x cava"
+alias        cv="xfce4-terminal --geometry 80x10+598+40 -x cava"
 alias     music="cv && cmus"
 alias      jrnl="jrnl --config-override editor 'vim'"
-alias     clock="cli --geometry 39x9+10+10 -x tty-clock"
-alias   weather="cli --geometry 125x41+400+150 -e 'bash -c \"wttr; read var\"'"
+alias     clock="xfce4-terminal --geometry 39x9+10+10 -x tty-clock"
+alias   weather="xfce4-terminal --geometry 125x41+400+150 -e 'bash -c \"wttr; read var\"'"
 alias ibmvfetch="neofetch --ascii --source $HOME/Repos/ascii-art/neofetch/ibm-tp-v.txt --ascii_colors '7' '1' '2' '4'"
 alias ibmhfetch="neofetch --ascii --source $HOME/Repos/ascii-art/neofetch/ibm-tp-h.txt --ascii_colors '7' '1' '2' '4'"
 alias      runc="$EDITOR a.c && gcc a.c && ./a.out && rm a.c a.out"

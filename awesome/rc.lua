@@ -91,9 +91,8 @@ end
     end
 
     -- This is used later as the default terminal and editor to run.
-    -- terminal = "xterm"
-    terminal = "xfce4-terminal"
-    editor = os.getenv("EDITOR") or "nano"
+    terminal = "alacritty"
+    editor = os.getenv("EDITOR") or "vim"
     editor_cmd = terminal .. " -e " .. editor
 
     -- Default modkey.
@@ -344,6 +343,8 @@ end
         awful.key({modkey}, "e", run("thunar"), info("rofi", "launcher")),
          -- Firefox
         awful.key({modkey}, "b", run("firefox"), info("firefox", "launcher")),
+         -- Homepage
+        awful.key({modkey, "Shift"}, "Return", run("firefox /home/dribe/Repos/nord-startpage-personal/index.html"), info("homepage", "launcher")),
          -- Telegram
         awful.key({modkey}, "t", run("telegram-desktop"), info("telegram", "launcher"))
     )
