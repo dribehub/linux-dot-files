@@ -5,6 +5,6 @@ PATH=$JAVA_HOME/bin:$PATH
 PATH=$HOME/Scripts:$PATH
 PSQL_PAGER=pspg
 EDITOR="/usr/bin/nvim"
-TERMINAL="/usr/bin/xfce4-terminal"
+TERMINAL="/usr/bin/alacritty"
 BROWSER="/usr/bin/firefox"
 WINDOWS="/run/media/dribe/Windows 10/Users/User/"

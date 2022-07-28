@@ -7,8 +7,7 @@ edit () {; "${=EDITOR}" $1 ;}
 cdls () {; cd "$1" && ls -l ;}
 mkcd () {; mkdir -p -- "$1" && cd -P -- "$1" ;}
 rmcd () {; DIR_PATH=$(pwd) && cd -P .. && rm -r "$DIR_PATH" ;}
-#tcl () {; print "$@" | trans -b | cowsay | lolcat ;}
-#dl () {; transmission-cli -w /home/dribe/Videos $1 ;}
+#dl () {; transmission-cli -w $HOME/Videos $1 ;}
 #pwd () {; ls -Ald ${1-PWD} ;}
 wiki () {; ddg "\!w ${@}" ;}
 uc () {; echo "\u$1" && echo -ne "\u$1" | xclip -selection clipboard ;}
@@ -53,39 +52,6 @@ yaysort () {
   # done
   # print -P "%F{5}$OUTPUT[1] %F{6}$OUTPUT[2] %F{7}$OUTPUT[3]"
   print $OUTPUT | less
-}
-
-wg () {
-    echo "\n\t\t\t\tjanar" && wg1 $1 $2
-    echo "\n\t\t\t\tprill" && wg2 $1 $2
-}
-wg1 () {; grep "$1 $2" /home/dribe/Documents/db/rrogat_janar_2021.csv ;}
-wg2 () {; grep "$1 $2" /home/dribe/Documents/db/rrogat_prill_2021.csv ;}
-tg () {; grep "$1,$2" /home/dribe/Documents/db/targat.csv ;}
-
-spy () {
-  ENT_COLOR="%F{3}" #yellow
-  KEY_COLOR="%F{5}" #purple
-  VAL_COLOR="%F{6}" #cyan
-  FILE=/home/dribe/Documents/db/patronazh_2021.csv
-  DATA=$(grep "$1,$2" "$FILE")
-  VALUES=("${(@s/,/)DATA}")
-  ENTRIES="${#VALUES[@]}"
-  KEYS=("NID" "Emri" "Mbiemri" "Atesia" "Datelindja" "QV" "Lista Nr" "Tel"
-        "Emigrant" "Vendi i Emigrimit" "I Sigurte" "Koment" "Patronazhisti"
-        "Preferenca" "Census2013 Preferenca" "Census2013 Siguria" "Vendlindja"
-        "Vendlindja" "Kompania" "Kodi i Baneses")
-  if ((ENTRIES<=20)); then
-    for i in {1..20}
-      print -P "${KEY_COLOR}${KEYS[i]}: ${VAL_COLOR}${VALUES[i]}"
-  else
-    entryID=1
-    for ((indexShift=0; indexShift<=ENTRIES; indexShift+=20)); do
-      print -P "${ENT_COLOR}ENTRY $((entryID++)):"
-      for i in {1..20}
-        print -P "${KEY_COLOR}${KEYS[i]}: ${VAL_COLOR}${VALUES[i+indexShift]}"
-    done
-  fi
 }
 
 extract () {

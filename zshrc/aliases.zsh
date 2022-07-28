@@ -13,11 +13,12 @@ alias scrotwind="scrot '$HOME/Desktop/%y-%m-%d-%H:%M:%S.png' -shole"
 alias    extend="xrandr --output eDP-1 --left-of HDMI-1"
 alias duplicate="xrandr --output eDP-1 --same-as HDMI-1"
 
-# vim shortcuts
+# configs
 alias   aliases="$EDITOR $ZSHRC/aliases.zsh"
 alias      funx="$EDITOR $ZSHRC/functions.zsh"
 alias  funstuff="$EDITOR $ZSHRC/cli-commands.sh"
 alias     zshrc="$EDITOR $HOME/.zshrc"
+alias    zshenv="$EDITOR $HOME/.zshenv"
 alias     vimrc="$EDITOR $HOME/.vimrc"
 alias    nvimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias awesomerc="$EDITOR $HOME/.config/awesome/rc.lua"
