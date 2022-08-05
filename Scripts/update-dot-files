@@ -54,8 +54,8 @@ while [[ $opt != [nN6] ]]; do
         3|show) git show;;
         4|status) git status;;
         5|commit) echo -ne "Enter commit message: ${col2}" &&
-            echo -ne "${col0}" &&
             read msg && 
+            echo -ne "${col0}" &&
             git commit -am "${msg}" && 
             echo -n '';;
         6|push) git push;;
