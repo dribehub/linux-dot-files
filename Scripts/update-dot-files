@@ -54,9 +54,10 @@ while [[ $opt != [nN6] ]]; do
         3|show) git show;;
         4|status) git status;;
         5|commit) echo -ne "Enter commit message: ${col2}" &&
+            echo -ne "${col0}" &&
             read msg && 
             git commit -am "${msg}" && 
-            echo -e "${col0}";;
+            echo -n '';;
         6|push) git push;;
         n|N) continue;;
         *) echo -e "${col3}Invalid option!${col0}";
