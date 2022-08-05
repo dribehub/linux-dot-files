@@ -1,15 +1,10 @@
 #!/bin/sh
 
 # ansi codes
-black="\e[30m"
-red="\e[31m"
-green="\e[32m"
-yellow="\e[33m"
-blue="\e[34m"
-magenta="\e[35m"
-cyan="\e[36m"
-white="\e[37m"
-normal="\e[0;39m"
+col0="\e[0;39m"     # normal
+col1="\e[32m"       # green
+col2="\e[1;32m"     # bold green
+col3="\e[1;31m"     # bold red
 
 cd $HOME/Repos/dot-files
 
@@ -45,26 +40,26 @@ fi
 # git prompt menu
 opt=0
 while [[ $opt != [nN6] ]]; do
-    echo -e "${green}1) ${normal}View commit history"
-    echo -e "${green}2) ${normal}Show latest changes"
-    echo -e "${green}3) ${normal}Show last commit"
-    echo -e "${green}4) ${normal}Show git status"
-    echo -e "${green}5) ${normal}Commit latest changes"
-    echo -e "${green}6) ${normal}Push latest commit"
-    echo -ne "${red}n/N ${normal}to cancel: "
-    read opt && echo '';
+    echo -e "${col1}1${col0}) ${col2}log ${col0}commit history"
+    echo -e "${col1}2${col0}) ${col0}show ${col2}diff${col0}erences"
+    echo -e "${col1}3${col0}) ${col2}show ${col0}last commit"
+    echo -e "${col1}4${col0}) ${col0}show git ${col2}status${col0}"
+    echo -e "${col1}5${col0}) ${col2}commit ${col0}latest changes"
+    echo -e "${col1}6${col0}) ${col2}push ${col0}latest commits"
+    echo -ne "${col2}n${col0}/${col2}N ${col0}to cancel: ${col2}"
+    read opt && echo -e "${col0}";
     case $opt in
-        1) git log;;
-        2) git diff HEAD;;
-        3) git show;;
-        4) git status;;
-        5) echo -n "Enter commit message: " &&
+        1|log) git log;;
+        2|diff) git diff HEAD;;
+        3|show) git show;;
+        4|status) git status;;
+        5|commit) echo -ne "Enter commit message: ${col2}" &&
             read msg && 
             git commit -am "${msg}" && 
-            echo '';;
-        6) git push;;
+            echo -e "${col0}";;
+        6|push) git push;;
         n|N) continue;;
-        *) echo -e "${red}Invalid option!${normal}";
+        *) echo -e "${col3}Invalid option!${col0}";
     esac
 done
 
