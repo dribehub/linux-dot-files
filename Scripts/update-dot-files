@@ -14,18 +14,18 @@ normal="\e[0;39m"
 cd $HOME/Repos/dot-files
 
 # configs
-cp $HOME/.config/awesome/rc.lua awesome/rc.lua
-cp $HOME/.config/neofetch/config.conf neofetch/config.conf
-cp $HOME/.config/polybar/config.ini polybar/config.ini
-cp $HOME/.config/nvim/init.vim  vim/init.vim
-cp $HOME/.vimrc vim/.vimrc
+cp $HOME/.config/awesome/rc.lua         awesome/rc.lua
+cp $HOME/.config/neofetch/config.conf   neofetch/config.conf
+cp $HOME/.config/polybar/config.ini     polybar/config.ini
+cp $HOME/.config/nvim/init.vim          vim/init.vim
+cp $HOME/.vimrc                         vim/.vimrc
 
 # zshrc
-cp $HOME/.zshrc zshrc/.zshrc
-cp $HOME/.zshenv zshrc/.zshenv
-cp $HOME/.zsh/aliases.zsh zshrc/aliases.zsh
-cp $HOME/.zsh/cli-commands.sh zshrc/cli-commands.sh
-cp $HOME/.zsh/functions.zsh zshrc/functions.zsh
+cp $HOME/.zshrc                         zshrc/.zshrc
+cp $HOME/.zshenv                        zshrc/.zshenv
+cp $HOME/.zsh/aliases.zsh               zshrc/aliases.zsh
+cp $HOME/.zsh/cli-commands.sh           zshrc/cli-commands.sh
+cp $HOME/.zsh/functions.zsh             zshrc/functions.zsh
 
 # scripts
 cp -r $HOME/Scripts/* Scripts
@@ -33,7 +33,17 @@ cp -r $HOME/Scripts/* Scripts
 # add all changes locally
 git add .
 
-# git menu prompt
+# -m option to avoid git prompt menu
+if  [[ $1 = "-m" ]]; then
+    shift
+    git status &&
+    git commit -am "${@}" &&
+    git push &&
+    exit 0 ||
+    exit 1
+fi
+
+# git prompt menu
 opt=0
 while [[ $opt != [nN5] ]]; do
     echo -e "${green}1) ${normal}git log"
@@ -48,8 +58,7 @@ while [[ $opt != [nN5] ]]; do
         2) git show && echo '';;
         3) git status;;
         4) echo -n "Enter commit message: " &&
-            read msg &&
-            git commit -am "${msg}";;
+            read msg && git commit -am "${msg}";;
         5) git push;;
     esac
 done
