@@ -44,7 +44,7 @@ fi
 
 # git prompt menu
 opt=0
-while [[ $opt != [nN5] ]]; do
+while [[ $opt != [nN6] ]]; do
     echo -e "${green}1) ${normal}View commit history"
     echo -e "${green}2) ${normal}Show latest changes"
     echo -e "${green}3) ${normal}Show last commit"
