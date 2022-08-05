@@ -52,13 +52,17 @@ while [[ $opt != [nN5] ]]; do
     echo -e "${green}5) ${normal}git push"
     echo -ne "${red}n/N ${normal}to cancel: "
     read opt
+    echo '';
     case $opt in
-        1) git log && echo '';;
-        2) git show && echo '';;
+        1) git log;;
+        2) git show;;
         3) git status;;
         4) echo -n "Enter commit message: " &&
-            read msg && git commit -am "${msg}";;
+            read msg && 
+            git commit -am "${msg}" && 
+            echo '';;
         5) git push;;
+        *) echo -e "${red}Invalid option!${normal}";
     esac
 done
 
