@@ -57,7 +57,7 @@ while [[ $opt != [nN6] ]]; do
             read msg && 
             echo -ne "${col0}" &&
             git commit -am "${msg}" && 
-            echo -n '';;
+            echo '';;
         6|push) git push;;
         n|N) continue;;
         *) echo -e "${col3}Invalid option!${col0}";
