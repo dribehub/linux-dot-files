@@ -49,8 +49,8 @@ while [[ $opt != [nN6] ]]; do
     echo -e "${green}2) ${normal}Show latest changes"
     echo -e "${green}3) ${normal}Show last commit"
     echo -e "${green}4) ${normal}Show git status"
-    echo -e "${green}5) ${normal}Commit changes"
-    echo -e "${green}6) ${normal}Push changes"
+    echo -e "${green}5) ${normal}Commit latest changes"
+    echo -e "${green}6) ${normal}Push latest commit"
     echo -ne "${red}n/N ${normal}to cancel: "
     read opt && echo '';
     case $opt in
