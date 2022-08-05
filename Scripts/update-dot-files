@@ -1,5 +1,16 @@
 #!/bin/sh
 
+# ansi codes
+black="\e[30m"
+red="\e[31m"
+green="\e[32m"
+yellow="\e[33m"
+blue="\e[34m"
+magenta="\e[35m"
+cyan="\e[36m"
+white="\e[37m"
+normal="\e[0;39m"
+
 cd $HOME/Repos/dot-files
 
 # configs
@@ -24,21 +35,22 @@ git add .
 
 # git menu prompt
 opt=0
-while [[ $opt != [nN4] ]]; do
-    echo "(1) git log"
-    echo "(2) git status"
-    echo "(3) git show"
-    echo "(4) git commit && git push"
-    echo -n "(n/N to cancel): "
+while [[ $opt != [nN5] ]]; do
+    echo -e "${green}1) ${normal}git log"
+    echo -e "${green}2) ${normal}git show"
+    echo -e "${green}3) ${normal}git status"
+    echo -e "${green}4) ${normal}git commit"
+    echo -e "${green}5) ${normal}git push"
+    echo -ne "${green}n/N ${normal}to cancel: "
     read opt
     case $opt in
         1) git log && echo '';;
-        2) git status && echo '';;
-        3) git show && echo '';;
+        2) git show && echo '';;
+        3) git status;;
         4) echo -n "Enter commit message: " &&
             read msg &&
-            git commit -am "${msg}" &&
-            git push;;
+            git commit -am "${msg}";;
+        5) git push;;
     esac
 done
 
