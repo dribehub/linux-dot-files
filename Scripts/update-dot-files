@@ -33,14 +33,13 @@ cp -r $HOME/Scripts/* Scripts
 # add all changes locally
 git add .
 
-# -m option to avoid git prompt menu
+# catch -m option and avoid git prompt menu
 if  [[ $1 = "-m" ]]; then
     shift
     git status &&
     git commit -am "${@}" &&
     git push &&
-    exit 0 ||
-    exit 1
+    exit 0 || exit 1
 fi
 
 # git prompt menu
@@ -51,7 +50,7 @@ while [[ $opt != [nN5] ]]; do
     echo -e "${green}3) ${normal}git status"
     echo -e "${green}4) ${normal}git commit"
     echo -e "${green}5) ${normal}git push"
-    echo -ne "${green}n/N ${normal}to cancel: "
+    echo -ne "${red}n/N ${normal}to cancel: "
     read opt
     case $opt in
         1) git log && echo '';;
