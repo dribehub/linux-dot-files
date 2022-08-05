@@ -34,6 +34,7 @@ alias        nf="neofetch-custom" # --backend off --col_offset 3
 alias    tormix="transmission-daemon && tormix"
 alias      ddgr="ddgr --colors mCmgxf --unsafe --noua -x"
 alias    wisdom="wisdom-tree"
+alias       udf="update-dot-files"
 
 # global pipe options
 alias -g  H="| head"

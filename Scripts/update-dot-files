@@ -62,6 +62,7 @@ while [[ $opt != [nN5] ]]; do
             git commit -am "${msg}" && 
             echo '';;
         5) git push;;
+        n|N) continue;;
         *) echo -e "${red}Invalid option!${normal}";
     esac
 done
