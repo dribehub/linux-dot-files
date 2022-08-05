@@ -9,9 +9,9 @@ col3="\e[1;31m"     # bold red
 cd $HOME/Repos/dot-files
 
 # configs
+cp -r $HOME/.config/polybar             polybar
 cp $HOME/.config/awesome/rc.lua         awesome/rc.lua
 cp $HOME/.config/neofetch/config.conf   neofetch/config.conf
-cp $HOME/.config/polybar/config.ini     polybar/config.ini
 cp $HOME/.config/nvim/init.vim          vim/init.vim
 cp $HOME/.vimrc                         vim/.vimrc
 
