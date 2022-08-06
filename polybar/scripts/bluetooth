@@ -1,9 +1,10 @@
 #!/bin/sh
+
 if [ $(bluetoothctl show | grep "Powered: yes" | wc -c) -eq 0 ]; then
-  echo "%{F#707880}off%{F-}"
+    echo "%{F#707880}off%{F-}"
 else
-  if [ $(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]; then 
-    echo "%{F#707880}on%{F-}"
-  fi
-  echo "%{F#707880}connected%{F-}"
+    if [ $(echo info | bluetoothctl | grep 'Device' | wc -c) -eq 0 ]; then 
+        echo "%{F#707880}on%{F-}"
+    fi
+    echo "%{F#707880}connected%{F-}"
 fi

@@ -313,8 +313,7 @@ end
         -- Screenshot
         awful.key({}, "Print", run("xfce4-screenshooter -rc"), info("choose region", "screenshot")),
         awful.key({"Shift"}, "Print", run("xfce4-screenshooter -wc"), info("active window", "screenshot")),
-        awful.key({modkey}, "s", run('scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h")'), info("select region and save", "screenshot")),
-        -- scrot "$HOME/Desktop/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf '%x,%y,%w,%h') | xclip -se c -t image/png -i location
+        awful.key({modkey}, "s", run('/home/dribe/Scripts/scs'), info("select region and save", "screenshot")),
 
         -- Standard program
         awful.key({modkey}, "Return", function() awful.spawn(terminal) end, info("terminal", "launcher")),
