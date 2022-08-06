@@ -22,7 +22,7 @@ alias    zshenv="$EDITOR $HOME/.zshenv"
 alias     vimrc="$EDITOR $HOME/.vimrc"
 alias    nvimrc="$EDITOR $HOME/.config/nvim/init.vim"
 alias awesomerc="$EDITOR $HOME/.config/awesome/rc.lua"
-alias polybarrc="$EDITOR $HOME/.config/polybar/config.ini"
+alias     udfrc="$EDITOR $HOME/Scripts/update-dot-files"
 
 # default command options
 alias        rm="rm -i"

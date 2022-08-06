@@ -287,12 +287,18 @@ end
                     client.focus:raise()
                 end
             end,
-            info("go back", "client")),
+        info("go back", "client")),
+        
+        -- Lock Screen and Sleep
+        awful.key({}, "XF86Sleep", run("i3lock-fancy-rapid 10 5")),
 
         -- Audio
         awful.key({}, "XF86AudioMute", run("pamixer -t")),
         awful.key({}, "XF86AudioRaiseVolume", run("pamixer -i 5")),
         awful.key({}, "XF86AudioLowerVolume", run("pamixer -d 5")),
+        awful.key({}, "XF86AudioPrev", run("spotifyctl -q previous")),
+        awful.key({}, "XF86AudioPlay", run("spotifyctl -q playpause")),
+        awful.key({}, "XF86AudioNext", run("spotifyctl -q next")),
 
         -- Brightness
         awful.key({}, "XF86MonBrightnessUp", brightness(.05)),
@@ -307,7 +313,8 @@ end
         -- Screenshot
         awful.key({}, "Print", run("xfce4-screenshooter -rc"), info("choose region", "screenshot")),
         awful.key({"Shift"}, "Print", run("xfce4-screenshooter -wc"), info("active window", "screenshot")),
-        awful.key({modkey}, "s", run('scrot "/home/dribe/Desktop/%y-%m-%d-%H:%M:%S.png" -s'), info("select region and save", "screenshot")),
+        awful.key({modkey}, "s", run('scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h")'), info("select region and save", "screenshot")),
+        -- scrot "$HOME/Desktop/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf '%x,%y,%w,%h') | xclip -se c -t image/png -i location
 
         -- Standard program
         awful.key({modkey}, "Return", function() awful.spawn(terminal) end, info("terminal", "launcher")),
@@ -340,7 +347,9 @@ end
         -- Rofi
         awful.key({modkey}, "space", run("rofi -show drun"), info("rofi", "launcher")),
          -- Thunar
-        awful.key({modkey}, "e", run("thunar"), info("rofi", "launcher")),
+        awful.key({modkey}, "e", run("thunar"), info("thunar", "launcher")),
+         -- Thunar desktop
+        awful.key({modkey}, "d", run("thunar Desktop"), info("desktop", "launcher")),
          -- Firefox
         awful.key({modkey}, "b", run("firefox"), info("firefox", "launcher")),
          -- Homepage
