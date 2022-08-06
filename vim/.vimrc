@@ -36,19 +36,19 @@ colorscheme nord " set colorscheme
     " let g:better_escape_interval = 150
 " General keybindings
     nnoremap ; :
-    " nnoremap <CR> o<esc>k
-    nnoremap <CR> i<CR><esc>k$
-    vnoremap <CR> i<CR><esc>k$
-    " inoremap jk <esc>
+    " nnoremap <CR> o<ESC>k
+    nnoremap <CR> i<CR><ESC>k$
+    vnoremap <CR> i<CR><ESC>k$
+    nnoremap <TAB> i<TAB><ESC>l
+    " inoremap jk <ESC>
 " Leader keybindings
     nmap <leader>p "0p
     nmap <leader>P "0P
     nmap <leader>' ysiw'
     nmap <leader>" ysiw"
     nmap <leader>` ysiw`
-    nmap <leader>< bi<<esc>ea><esc>
+    nmap <leader>< bi<<ESC>ea><ESC>
     nmap <leader>div ysiw<div>
 " Move between Vimdows
     nmap <space> <C-w>
-
 
