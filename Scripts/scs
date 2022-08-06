@@ -1,9 +1,16 @@
 #!/bin/sh
 
 case $1 in
-    -rs) scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h");;
+    -rs) scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png" \
+        -a $(slop -qf "%x,%y,%w,%h");;
     -rsd) scrot "/home/dribe/Desktop/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h");;
     -rsp) scrot "$2/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h");;
+    -es) scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png";;
+    -esd) scrot "/home/dribe/Desktop/%y-%m-%d-%H:%M:%S.png";;
+    -esp) scrot "$2/%y-%m-%d-%H:%M:%S.png";;
+    -ec) scrot "/home/dribe/Pictures/screenshots/temp.png" &&
+        xclip -se c -t image/png -i /home/dribe/Pictures/screenshots/temp.png &&
+        rm /home/dribe/Pictures/screenshots/temp.png;;
     *) scrot "/home/dribe/Pictures/screenshots/temp.png" \
         -a $(slop -qf "%x,%y,%w,%h") && 
         xclip -se c -t image/png -i /home/dribe/Pictures/screenshots/temp.png &&
