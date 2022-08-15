@@ -1,16 +1,24 @@
 #!/bin/sh
 
 case $1 in
+    # --region --save --path='~/Pictures/screenshots'
     -rs) scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png" \
         -a $(slop -qf "%x,%y,%w,%h");;
+    # --region --save --path='~/Desktop'
     -rsd) scrot "/home/dribe/Desktop/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h");;
+    # --region --save --path='$1'
     -rsp) scrot "$2/%y-%m-%d-%H:%M:%S.png" -a $(slop -qf "%x,%y,%w,%h");;
+    # --entire-screen --save --path='~/Pictures/screenshots'
     -es) scrot "/home/dribe/Pictures/screenshots/%y-%m-%d-%H:%M:%S.png";;
+    # --entire-screen --save --path='~/Desktop'
     -esd) scrot "/home/dribe/Desktop/%y-%m-%d-%H:%M:%S.png";;
+    # --entire-screen --save --path='$1'
     -esp) scrot "$2/%y-%m-%d-%H:%M:%S.png";;
+    # --entire-screen --copy-to-clipboard
     -ec) scrot "/home/dribe/Pictures/screenshots/temp.png" &&
         xclip -se c -t image/png -i /home/dribe/Pictures/screenshots/temp.png &&
         rm /home/dribe/Pictures/screenshots/temp.png;;
+    # --region --copy-to-clipboard
     *) scrot "/home/dribe/Pictures/screenshots/temp.png" \
         -a $(slop -qf "%x,%y,%w,%h") && 
         xclip -se c -t image/png -i /home/dribe/Pictures/screenshots/temp.png &&

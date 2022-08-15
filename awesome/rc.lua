@@ -12,6 +12,16 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+local nc = naughty.config
+    nc.spacing = 8
+    nc.defaults.icon_size = 64
+    nc.defaults.margin = 16
+    nc.defaults.padding = 8
+    nc.defaults.position = "bottom_right"
+    nc.presets.low.timeout = 3
+    nc.presets.low.bg = "#63ae8d"
+    nc.presets.low.fg = "#ffffff"
+    nc.presets.critical.bg = "#c97074"
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Enable hotkeys help widget for VIM and other apps
@@ -100,6 +110,8 @@ end
     -- If you do not like this or do not have such a key,
     -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
     -- However, you can use another modifier like Mod1, but it may interact with others.
+    alt_l = "Mod1"
+    alt_r = "Mod5"
     modkey = "Mod4"
 
     -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -233,7 +245,7 @@ end
         s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
         -- Add padding below Polybar
-        awful.screen.padding(screen[s], { top = 25 })
+        awful.screen.padding(screen[s], { top = 25, bottom = 25 })
 
         -- Add widgets to the wibox
         s.mywibox:setup {
@@ -267,9 +279,12 @@ end
 -- {{{ Key bindings
     globalkeys = gears.table.join(
         awful.key({modkey, "Shift"}, "s", hotkeys_popup.show_help, info("show help", "awesome")),
+        awful.key({modkey}, "Escape", hotkeys_popup.show_help, info("show help", "awesome")),
         awful.key({modkey}, "Prior", awful.tag.viewprev, info("view previous", "tag")),
         awful.key({modkey}, "Next", awful.tag.viewnext, info("view next", "tag")),
-        awful.key({modkey}, "Escape", awful.tag.history.restore, info("go back", "tag")),
+        -- awful.key({modkey}, "Escape", awful.tag.history.restore, info("switch to last tag", "tag")),
+        awful.key({alt_l}, "Tab", awful.tag.history.restore, info("switch to last tag", "tag")),
+        awful.key({alt_r}, "Tab", awful.tag.history.restore, info("switch to last tag", "tag")),
         
         awful.key({modkey}, "j", function() awful.client.focus.byidx( 1) end, info("focus next by index", "client")),
         awful.key({modkey}, "k", function() awful.client.focus.byidx(-1) end, info("focus previous by index", "client")),
@@ -307,6 +322,9 @@ end
         -- Network
         awful.key({modkey, "Shift"}, "r", run("nmcli d connect wlp2s0"), info("reload network", "system")),
 
+        -- Polybar
+        awful.key({modkey}, "p", run("/home/dribe/Scripts/toggle-polybar"), info("show/hide polybar", "system")),
+
         -- Task manager
         awful.key({"Ctrl", "Mod1"}, "m", run("xfce4-taskmanager"), info("open task manager", "system")),
 
@@ -340,7 +358,7 @@ end
                   info("restore minimized", "client")),
 
         -- Prompt
-        awful.key({modkey}, "r", function() awful.screen.focused().mypromptbox:run() end, info("run", "launcher")),
+        -- awful.key({modkey}, "r", function() awful.screen.focused().mypromptbox:run() end, info("run", "launcher")),
         -- Lock
         awful.key({modkey, "Control", "Shift"}, "l", run("i3lock-fancy-rapid 10 5"), info("lock screen", "system")),
         -- Rofi
@@ -351,6 +369,7 @@ end
         awful.key({modkey}, "d", run("thunar Desktop"), info("desktop", "launcher")),
          -- Firefox
         awful.key({modkey}, "b", run("firefox"), info("firefox", "launcher")),
+        awful.key({modkey, "Shift"}, "b", run("firefox --private-window"), info("firefox incognito", "launcher")),
          -- Homepage
         awful.key({modkey, "Shift"}, "Return", run("firefox /home/dribe/Repos/nord-startpage-personal/index.html"), info("homepage", "launcher")),
          -- Telegram

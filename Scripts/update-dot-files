@@ -10,7 +10,7 @@ cd $HOME/Repos/dot-files
 
 # configs
 cp -r $HOME/.config/polybar/*           polybar
-cp $HOME/.config/awesome/rc.lua         awesome/rc.lua
+cp -r $HOME/.config/awesome/*           awesome
 cp $HOME/.config/neofetch/config.conf   neofetch/config.conf
 cp $HOME/.config/nvim/init.vim          vim/init.vim
 cp $HOME/.vimrc                         vim/.vimrc
