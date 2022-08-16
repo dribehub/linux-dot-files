@@ -244,7 +244,7 @@ end
         -- Create the wibox
         s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
-        -- Add padding below Polybar
+        -- Add padding for Polybar
         -- awful.screen.padding(screen[s], { top = 25, bottom = 25 })
         awful.screen.padding(screen[s], { top = 25 })
 
@@ -618,7 +618,9 @@ end
 
 -- {{{ Autostart
     shell("nitrogen --restore")
-    shell("polybar")
+    shell("polybar main")
+--    shell("polybar top")
+--    shell("polybar bottom")
 --    shell("picom")
 --    shell("~/scripts/init.sh")
 -- }}}
