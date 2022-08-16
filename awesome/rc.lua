@@ -245,7 +245,8 @@ end
         s.mywibox = awful.wibar({ position = "top", screen = s, visible = false })
 
         -- Add padding below Polybar
-        awful.screen.padding(screen[s], { top = 25, bottom = 25 })
+        -- awful.screen.padding(screen[s], { top = 25, bottom = 25 })
+        awful.screen.padding(screen[s], { top = 25 })
 
         -- Add widgets to the wibox
         s.mywibox:setup {

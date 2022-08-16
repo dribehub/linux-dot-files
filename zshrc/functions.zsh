@@ -89,15 +89,3 @@ extract () { # Extract compressed files
     fi
 }
 
-pb () { # Navigate to polybar configs
-    BASEDIR=$HOME/.config/polybar
-    case $1 in
-        colors)     $EDITOR $BASEDIR/colors.ini;;
-        config)     $EDITOR $BASEDIR/config.ini;;
-        dock)       $EDITOR $BASEDIR/dock.ini;;
-        modules)    $EDITOR $BASEDIR/modules.ini;;
-        spotify)    $EDITOR $BASEDIR/spotify.ini;;
-        *)          print -P "Invalid argument: %F{9}$1%F{-1}"
-                    print -P "Valid arguments: %F{2}colors config dock modules spotify";;
-    esac
-}
