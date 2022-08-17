@@ -30,25 +30,6 @@ copy $HOME/.zsh/aliases.zsh                     zshrc
 copy $HOME/.zsh/cli-commands.sh                 zshrc
 copy $HOME/.zsh/functions.zsh                   zshrc
 
-## configs
-#cp -r $HOME/.config/polybar             polybar
-#cp -r $HOME/.config/awesome             awesome
-#cp -r $HOME/.config/spicetify           spicetify
-#cp $HOME/.config/neofetch/config.conf   neofetch/config.conf
-#cp $HOME/.config/nvim/init.vim          vim/init.vim
-#cp $HOME/.vimrc                         vim/.vimrc
-#cp $HOME/.Xresources                    .Xresources
-#
-## zshrc
-#cp $HOME/.zshrc                         zshrc/.zshrc
-#cp $HOME/.zshenv                        zshrc/.zshenv
-#cp $HOME/.zsh/aliases.zsh               zshrc/aliases.zsh
-#cp $HOME/.zsh/cli-commands.sh           zshrc/cli-commands.sh
-#cp $HOME/.zsh/functions.zsh             zshrc/functions.zsh
-#
-## scripts
-#cp -r $HOME/Scripts/* Scripts
-
 # add all changes locally
 git add .
 
