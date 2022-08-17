@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Wikipedia search
+
+ddg "\!w ${@}"

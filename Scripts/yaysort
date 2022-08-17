@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+# Sort 10 (or more) most recent packages installed
+
+OUTPUT=$(expac -t "%Y-%m-%d %T" "%l\t%n" | sort | tail -n "${1:-10}")
+OUTPUT=("${(s/ /)OUTPUT}")
+# print "number of packages: ${#OUTPUT[@]}\n" | less
+# for i in $OUTPUT; do
+#
+# done
+# print -P "%F{5}$OUTPUT[1] %F{6}$OUTPUT[2] %F{7}$OUTPUT[3]"
+print $OUTPUT | less

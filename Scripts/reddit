@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+# Reddit search
+
+URL="https://www.reddit.com/"
+if [[ $1 ]]; then
+    if [[ "$1" == r/* ]]; then
+        URL="$URL""$1"
+        if [[ $2 ]]; then
+            shift
+            URL="${URL}/search/?q=${@}&restrict_sr=1"
+        fi
+    else
+        URL="${URL}search/?q=${@}"
+    fi
+fi
+$BROWSER "$URL"

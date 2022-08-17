@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# Extract compressed files
+
+if [ -f $1 ]; then
+    case $1 in
+        *.tar)      sudo tar xf $1;;
+        *.tar.bz2)  sudo tar xjf $1;;
+        *.tbz2)     sudo tar xjf $1;;
+        *.tar.gz)   sudo tar xzf $1;;
+        *.tgz)      sudo tar xzf $1;;
+        *.bz2)      sudo bunzip2 $1;;
+        *.gz)       sudo gunzip $1;;
+        *.7z)       sudo 7z x $1;;
+        *.Z)        sudo uncompress $1;;
+        *.rar)      sudo unrar x $1;;
+        *.zip)      sudo unzip $1;;
+        *)          print -P "Invalid format: %F{9}.$(echo "${1##*\.}")";;
+    esac
+else
+    print -P "Could not find file: %F{9}$1"
+fi

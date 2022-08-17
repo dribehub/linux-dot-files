@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 BASEDIR=$HOME/.config/polybar
-
 case $1 in
     colors)     $EDITOR $BASEDIR/colors.ini;;
     config)     $EDITOR $BASEDIR/config.ini;;

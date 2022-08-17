@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+# Follow AUR upstream repo
+
+if [ -n "$(yay -Si $1)" ]; then
+    URL=$(yay -Si $1 | grep '^URL' | sed 's/.*: //')
+    [ ! "$URL" ] && yay -Si $1 || $BROWSER $URL
+fi

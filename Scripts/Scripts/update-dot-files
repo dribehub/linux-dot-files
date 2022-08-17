@@ -14,21 +14,23 @@ copy() {
 
 cd $HOME/Repos/dot-files
 
-copy $HOME/Scripts                              .
-copy $HOME/.config/polybar                      .
-copy $HOME/.config/awesome                      .
-copy $HOME/.config/spicetify/config-xpui.ini    spicetify
-copy $HOME/.config/neofetch/config.conf         neofetch
-copy $HOME/.config/nvim                         .
-copy $HOME/.vimrc                               vim
-copy $HOME/.Xresources                          xresources
+copy $HOME/.config/polybar polybar
+copy $HOME/.config/awesome awesome
+copy $HOME/.config/spicetify spicetify
+copy $HOME/.config/neofetch/config.conf neofetch
+copy $HOME/.config/nvim vim
+copy $HOME/.vimrc vim
+copy $HOME/.Xresources .
 
 # zshrc
-copy $HOME/.zshrc                               zshrc
-copy $HOME/.zshenv                              zshrc
-copy $HOME/.zsh/aliases.zsh                     zshrc
-copy $HOME/.zsh/cli-commands.sh                 zshrc
-copy $HOME/.zsh/functions.zsh                   zshrc
+copy $HOME/.zshrc               zshrc
+copy $HOME/.zshenv              zshrc
+copy $HOME/.zsh/aliases.zsh     zshrc
+copy $HOME/.zsh/cli-commands.sh zshrc
+copy $HOME/.zsh/functions.zsh   zshrc
+
+# scripts
+copy $HOME/Scripts Scripts
 
 ## configs
 #cp -r $HOME/.config/polybar             polybar

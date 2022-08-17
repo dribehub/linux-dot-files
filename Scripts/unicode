@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Parse unicodes to glyphs
+
+echo "\u$1" && echo -ne "\u$1" | xclip -selection clipboard

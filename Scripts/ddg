@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+# DuckDuckGo search
+
+URL="https://www.duckduckgo.com/"
+[[ $1 ]] && URL="$URL""?q=${@}&ia=web"
+$BROWSER "$URL"
