@@ -3,14 +3,57 @@
 BASEDIR=$HOME/.config/polybar
 
 case $1 in
-    colors)     $EDITOR $BASEDIR/colors.ini;;
-    config)     $EDITOR $BASEDIR/config.ini;;
-    dock)       $EDITOR $BASEDIR/dock.ini;;
-    modules)    $EDITOR $BASEDIR/modules.ini;;
-    spotify)    $EDITOR $BASEDIR/spotify.ini;;
-    top)        $EDITOR $BASEDIR/top.ini;;
-    bottom)     $EDITOR $BASEDIR/bottom.ini;;
-    '')         polybar top & polybar bottom &;;
-    *)          print -P "Invalid argument: %F{9}$1%F{-1}"
-                print -P "Valid arguments: %F{2}colors config dock modules spotify top bottom";;
+    (colors)        $EDITOR $BASEDIR/colors.ini;;
+    (config)        $EDITOR $BASEDIR/config.ini;;
+    
+    (modules|module|mod|m|-m) case $2 in
+        (battery)                   $EDITOR $BASEDIR/modules/battery.ini;;
+        (bluetooth)                 $EDITOR $BASEDIR/modules/bluetooth.ini;;
+        (cpu)                       $EDITOR $BASEDIR/modules/cpu.ini;;
+        (date|time)                 $EDITOR $BASEDIR/modules/date.ini;;
+        (filesystem|fs)             $EDITOR $BASEDIR/modules/filesystem.ini;;
+        (memory|ram)                $EDITOR $BASEDIR/modules/memory.ini;;
+        (mic-volume|mic)            $EDITOR $BASEDIR/modules/mic.ini;;
+        (network|wifi)              $EDITOR $BASEDIR/modules/network.ini;;
+        (poweroff|shutdown)         $EDITOR $BASEDIR/modules/poweroff.ini;;
+        (pulseaudio|audio|volume)   $EDITOR $BASEDIR/modules/pulseaudio.ini;;
+        (restart)                   $EDITOR $BASEDIR/modules/restart.ini;;
+        (xkeyboard|keyboard|layout) $EDITOR $BASEDIR/modules/xkeyboard.ini;;
+        (xwindow|window)            $EDITOR $BASEDIR/modules/xwindow.ini;;
+        (xworkspaces|workspaces)    $EDITOR $BASEDIR/modules/xworkspaces.ini;;
+        ('') print -P "You must specify the module name";;
+        (*) print -P "Invalid module name: %F{9}$2%F{-1}";;
+    esac;;
+    
+    (dock|apps|d|-d) case $2 in
+        (discord)  $EDITOR $BASEDIR/modules/dock/discord-dock.ini;;
+        (firefox)  $EDITOR $BASEDIR/modules/dock/firefox-dock.ini;;
+        (intellij) $EDITOR $BASEDIR/modules/dock/intellij-dock.ini;;
+        (nicotine) $EDITOR $BASEDIR/modules/dock/nicotine-dock.ini;;
+        (spotify)  $EDITOR $BASEDIR/modules/dock/spotify-dock.ini;;
+        (telegram) $EDITOR $BASEDIR/modules/dock/telegram-dock.ini;;
+        (whatsapp) $EDITOR $BASEDIR/modules/dock/whatsapp-dock.ini;;
+        ('') print -P "You must specify the dock application";;
+        (*) print -P "Invalid dock application: %F{9}$2%F{-1}";;
+    esac;;
+    
+    (spotify|s|-s) case $2 in
+        (next)              $EDITOR $BASEDIR/modules/spotify/next.ini;;
+        (playpause|play)    $EDITOR $BASEDIR/modules/spotify/playpause.ini;;
+        (previous|prev)     $EDITOR $BASEDIR/modules/spotify/previous.ini;;
+        (spotify|playback)  $EDITOR $BASEDIR/modules/spotify/spotify.ini;;
+        ('') print -P "You must specify the module name";;
+        (*) print -P "Invalid spotify module: %F{9}$2%F{-1}";;
+    esac;;
+    
+    (bar|b|-b) case $2 in
+        (top)        $EDITOR $BASEDIR/bars/top.ini;;
+        (bottom)     $EDITOR $BASEDIR/bars/bottom.ini;;
+        (main)       $EDITOR $BASEDIR/bars/main.ini;;
+        ('') print -P "You must specify the bar name";;
+        (*) print -P "Invalid bar name: %F{9}$2%F{-1}";;
+    esac;;
+
+    ('') print -P "You must specify the config argument";;
+    (*) print -P "Invalid argument: %F{9}$1%F{-1}";;
 esac
