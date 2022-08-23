@@ -13,7 +13,7 @@ case $1 in
         (date|time)                 $EDITOR $BASEDIR/modules/date.ini;;
         (filesystem|fs)             $EDITOR $BASEDIR/modules/filesystem.ini;;
         (memory|ram)                $EDITOR $BASEDIR/modules/memory.ini;;
-        (mic-volume|mic)            $EDITOR $BASEDIR/modules/mic.ini;;
+        (mic-volume|mic)            $EDITOR $BASEDIR/modules/mic-volume.ini;;
         (network|wifi)              $EDITOR $BASEDIR/modules/network.ini;;
         (poweroff|shutdown)         $EDITOR $BASEDIR/modules/poweroff.ini;;
         (pulseaudio|audio|volume)   $EDITOR $BASEDIR/modules/pulseaudio.ini;;

@@ -4,15 +4,16 @@ DEFAULT_SOURCE_INDEX=$(pacmd list-sources | grep "\* index:" | cut -d' ' -f5)
 
 display_volume() {
 	if [ -z "$volume" ]; then
-	  echo "No Mic Found"
+      echo "%{F#707880}No Mic Found%{F-}"
 	else
 	  volume="${volume//[[:blank:]]/}" 
 	  if [[ "$mute" == *"yes"* ]]; then
-	    echo "[$volume]"
+        # echo "%{F#707880}[$volume]%{F-}"
+        echo "%{F#707880}muted%{F-}"
 	  elif [[ "$mute" == *"no"* ]]; then
-	    echo "$volume"
+        echo "%{F#707880}$volume%{F-}"
 	  else
-	    echo "$volume !"
+        echo "%{F#707880}$volume !%{F-}"
 	  fi
 	fi
 }
@@ -51,6 +52,6 @@ case $1 in
 		fi
 		;;
 	*)
-		echo "Invalid script option"
+        echo "%{F#707880}Invalid script option%{F-}"
 		;;
 esac
