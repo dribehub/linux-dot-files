@@ -7,20 +7,22 @@ copy() {
 }
 
 cd $HOME/Repos/dot-files
-copy $HOME/Scripts                              .
-copy $HOME/.zshrc                               zshrc
-copy $HOME/.zshenv                              zshrc
-copy $HOME/.zsh/aliases.zsh                     zshrc
-copy $HOME/.zsh/cli-commands.sh                 zshrc
-copy $HOME/.zsh/functions.zsh                   zshrc
-copy $HOME/.Xresources                          xresources
-copy $HOME/.vimrc                               vim
-copy $HOME/.config/nvim                         .
-copy $HOME/.config/polybar                      .
-copy $HOME/.config/awesome                      .
-copy $HOME/.config/spicetify/config-xpui.ini    spicetify
-copy $HOME/.config/neofetch/config.conf         neofetch
-copy /usr/share/fonts                           fonts
+copy ~/Scripts                              .
+copy ~/.zshrc                               zshrc
+copy ~/.zshenv                              zshrc
+copy ~/.zsh/aliases.zsh                     zshrc
+copy ~/.zsh/cli-commands.sh                 zshrc
+copy ~/.zsh/functions.zsh                   zshrc
+copy ~/.Xresources                          xresources
+copy ~/.vimrc                               vim
+copy ~/.config/nvim                         .
+copy ~/.config/rofi                         .
+copy ~/.config/polybar                      .
+copy ~/.config/awesome                      .
+copy ~/.config/gtk-3.0/settings.ini         gtk
+copy ~/.config/spicetify/config-xpui.ini    spicetify
+copy ~/.config/neofetch/config.conf         neofetch
+copy /usr/share/fonts                       .
 
 # ansi codes
 col0="\e[0;39m"     # normal

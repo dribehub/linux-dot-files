@@ -4,16 +4,15 @@ DEFAULT_SOURCE_INDEX=$(pacmd list-sources | grep "\* index:" | cut -d' ' -f5)
 
 display_volume() {
 	if [ -z "$volume" ]; then
-      echo "%{F#707880}No Mic Found%{F-}"
+      echo "No Mic Found"
 	else
 	  volume="${volume//[[:blank:]]/}" 
 	  if [[ "$mute" == *"yes"* ]]; then
-        # echo "%{F#707880}[$volume]%{F-}"
-        echo "%{F#707880}muted%{F-}"
+        echo "muted" # "[$volume]"
 	  elif [[ "$mute" == *"no"* ]]; then
-        echo "%{F#707880}$volume%{F-}"
+        echo "$volume"
 	  else
-        echo "%{F#707880}$volume !%{F-}"
+        echo "$volume !"
 	  fi
 	fi
 }
@@ -32,16 +31,16 @@ case $1 in
 		;;
 	"inc-vol")
 		if [ -z "$2" ]; then
-			pactl set-source-volume $DEFAULT_SOURCE_INDEX +7%
+			pactl set-source-volume $DEFAULT_SOURCE_INDEX +5%
 		else
-			pactl set-source-volume $2 +7%
+			pactl set-source-volume $2 +5%
 		fi
 		;;
 	"dec-vol")
 		if [ -z "$2" ]; then
-			pactl set-source-volume $DEFAULT_SOURCE_INDEX -7%
+			pactl set-source-volume $DEFAULT_SOURCE_INDEX -5%
 		else
-			pactl set-source-volume $2 -7%
+			pactl set-source-volume $2 -5%
 		fi
 		;;
 	"mute-vol")
@@ -52,6 +51,6 @@ case $1 in
 		fi
 		;;
 	*)
-        echo "%{F#707880}Invalid script option%{F-}"
+        echo "Invalid script option"
 		;;
 esac

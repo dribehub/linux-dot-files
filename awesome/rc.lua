@@ -279,7 +279,7 @@ end
 
 -- {{{ Key bindings
     globalkeys = gears.table.join(
-        awful.key({modkey, "Shift"}, "s", hotkeys_popup.show_help, info("show help", "awesome")),
+        awful.key({modkey, "Control"}, "s", hotkeys_popup.show_help, info("show help", "awesome")),
         awful.key({modkey}, "Escape", hotkeys_popup.show_help, info("show help", "awesome")),
         awful.key({modkey}, "Prior", awful.tag.viewprev, info("view previous", "tag")),
         awful.key({modkey}, "Next", awful.tag.viewnext, info("view next", "tag")),
@@ -310,8 +310,8 @@ end
 
         -- Audio
         awful.key({}, "XF86AudioMute", run("pamixer -t")),
-        awful.key({}, "XF86AudioRaiseVolume", run("pamixer -i 5")),
-        awful.key({}, "XF86AudioLowerVolume", run("pamixer -d 5")),
+        awful.key({}, "XF86AudioRaiseVolume", run("pamixer -ui 5")),
+        awful.key({}, "XF86AudioLowerVolume", run("pamixer -ud 5")),
         awful.key({}, "XF86AudioPrev", run("spotifyctl -q previous")),
         awful.key({}, "XF86AudioPlay", run("spotifyctl -q playpause")),
         awful.key({}, "XF86AudioNext", run("spotifyctl -q next")),
@@ -332,7 +332,8 @@ end
         -- Screenshot
         awful.key({}, "Print", run("/home/dribe/Scripts/scs -ec"), info("copy entire screen", "screenshot")),
         awful.key({"Shift"}, "Print", run("/home/dribe/Scripts/scs -es"), info("save entire screen", "screenshot")),
-        awful.key({modkey}, "s", run('/home/dribe/Scripts/scs'), info("copy selected region", "screenshot")),
+        awful.key({modkey}, "s", run('/home/dribe/Scripts/scs -rc'), info("copy selected region", "screenshot")),
+        awful.key({modkey, "Shift"}, "s", run('/home/dribe/Scripts/scs -rs'), info("save selected region", "screenshot")),
 
         -- Standard program
         awful.key({modkey}, "Return", function() awful.spawn(terminal) end, info("terminal", "launcher")),
