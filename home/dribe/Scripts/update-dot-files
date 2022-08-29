@@ -18,7 +18,7 @@ rsync -a /$BASEDIR/.Xresources                  $BASEDIR/
 
 BASEDIR=home/dribe/.config # personal configs
 rsync -a /$BASEDIR/awesome                      $BASEDIR/
-rsync -a /$BASEDIR/gtk-3.0/settings.ini         $BASEDIR/gtk-3.0/
+rsync -a /$BASEDIR/gtk-3.0                      $BASEDIR/
 rsync -a /$BASEDIR/neofetch/config.conf         $BASEDIR/neofetch/
 rsync -a /$BASEDIR/nvim                         $BASEDIR/
 rsync -a /$BASEDIR/polybar                      $BASEDIR/
