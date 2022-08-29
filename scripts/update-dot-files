@@ -1,13 +1,8 @@
 #!/bin/sh
 
-# copy function
-copy() {
-    [ -d $1 ] && cp -ur $1 $2
-    [ -f $1 ] && cp -u $1 $2
-}
-
 cd $HOME/Repos/dot-files
-rsync -a ~/Scripts/*                            Scripts/
+
+rsync -a ~/Scripts/*                            scripts/
 rsync -a ~/.zshrc                               zshrc/
 rsync -a ~/.zshenv                              zshrc/
 rsync -a ~/.zsh/aliases.zsh                     zshrc/
