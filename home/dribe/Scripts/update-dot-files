@@ -1,29 +1,31 @@
 #!/bin/sh
 
-cd $HOME/Repos/dot-files
-l_HOME=home/dribe
-l_CONF=home/dribe/.config
+cd ~/Repos/dot-files
 
-rsync -a /usr/share/fonts                       usr/share/
-rsync -a ~/Scripts                              $l_HOME/
-rsync -a ~/.zshrc                               $l_HOME/
-rsync -a ~/.zshenv                              $l_HOME/
-rsync -a ~/.zsh/aliases.zsh                     $l_HOME/.zsh/
-rsync -a ~/.zsh/cli-commands.sh                 $l_HOME/.zsh/
-rsync -a ~/.zsh/functions.zsh                   $l_HOME/.zsh/
-rsync -a ~/.oh-my-zsh/completions               $l_HOME/.oh-my-zsh/
-rsync -a ~/.vimrc                               $l_HOME/
-rsync -a ~/.Xresources                          $l_HOME/
+BASEDIR=usr/share # system configs
+rsync -a /$BASEDIR/fonts                        $BASEDIR/
 
-rsync -a ~/.config/awesome                      $l_CONF/
-rsync -a ~/.config/gtk-3.0/settings.ini         $l_CONF/gtk-3.0/
-rsync -a ~/.config/neofetch/config.conf         $l_CONF/neofetch/
-rsync -a ~/.config/nvim                         $l_CONF/
-rsync -a ~/.config/polybar                      $l_CONF/
-rsync -a ~/.config/rofi                         $l_CONF/
-rsync -a ~/.config/spicetify/config-xpui.ini    $l_CONF/spicetify/
-rsync -a ~/.config/vimium                       $l_CONF/
-rsync -a ~/.config/xfce4/terminal               $l_CONF/xfce4/
+BASEDIR=home/dribe # global configs
+rsync -a /$BASEDIR/Scripts                      $BASEDIR/
+rsync -a /$BASEDIR/.zshrc                       $BASEDIR/
+rsync -a /$BASEDIR/.zshenv                      $BASEDIR/
+rsync -a /$BASEDIR/.zsh/aliases.zsh             $BASEDIR/.zsh/
+rsync -a /$BASEDIR/.zsh/cli-commands.sh         $BASEDIR/.zsh/
+rsync -a /$BASEDIR/.zsh/functions.zsh           $BASEDIR/.zsh/
+rsync -a /$BASEDIR/.oh-my-zsh/completions       $BASEDIR/.oh-my-zsh/
+rsync -a /$BASEDIR/.vimrc                       $BASEDIR/
+rsync -a /$BASEDIR/.Xresources                  $BASEDIR/
+
+BASEDIR=home/dribe/.config # personal configs
+rsync -a /$BASEDIR/awesome                      $BASEDIR/
+rsync -a /$BASEDIR/gtk-3.0/settings.ini         $BASEDIR/gtk-3.0/
+rsync -a /$BASEDIR/neofetch/config.conf         $BASEDIR/neofetch/
+rsync -a /$BASEDIR/nvim                         $BASEDIR/
+rsync -a /$BASEDIR/polybar                      $BASEDIR/
+rsync -a /$BASEDIR/rofi                         $BASEDIR/
+rsync -a /$BASEDIR/spicetify/config-xpui.ini    $BASEDIR/spicetify/
+rsync -a /$BASEDIR/vimium                       $BASEDIR/
+rsync -a /$BASEDIR/xfce4/terminal               $BASEDIR/xfce4/
 
 # ansi codes
 col0="\e[0;39m"     # normal
