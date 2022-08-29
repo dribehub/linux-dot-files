@@ -1,0 +1,44 @@
+#compdef pb
+
+_pb() {
+    local -a commands
+    commands=(
+        "colors:Edit polybar colors"
+        "config:Edit polybar config file"
+        "fonts:Edit polybar fonts"
+        "bar:Edit a specific bar"
+        "modules:Edit a specific module"
+        "dock:Edit a specific dock module"
+        "spotify:Edit a specific spotify module"
+        "comp:Edit _pb"
+    )
+  
+    _arguments -C \
+        '1: :->mode'\
+        '*:: :->name'
+
+    case "$state" in
+        (mode)
+            _describe -t commands 'Commands' commands;;
+        (*)
+            case $words[1] in
+                (modules|module|mod|m|-m)
+                    local m_args=(battery bluetooth cpu date filesystem
+                    memory mic-volume network poweroff pulseaudio restart
+                    xkeyboard xwindow xworkspaces)
+                    _describe -t output 'Current modules' m_args;;
+                (dock|apps|d|-d)
+                    local d_args=(discord firefox intellij nicotine spotify
+                    telegram whatsapp)
+                    _describe -t output 'Current dock modules' d_args;;
+                (spotify|s|-s)
+                    local s_args=(next playpause previous spotify)
+                    _describe -t output 'Current spotify modules' s_args;;
+                (bar|b|-b)
+                    local b_args=(main top bottom)
+                    _describe -t output 'Current polybar bars' b_args;;
+            esac;;
+    esac
+}
+
+_pb

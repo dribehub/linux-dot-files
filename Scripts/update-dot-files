@@ -2,27 +2,29 @@
 
 # copy function
 copy() {
-    [ -d $1 ] && cp -r $1 $2
-    [ -f $1 ] && cp $1 $2
+    [ -d $1 ] && cp -ur $1 $2
+    [ -f $1 ] && cp -u $1 $2
 }
 
 cd $HOME/Repos/dot-files
-copy ~/Scripts                              .
-copy ~/.zshrc                               zshrc
-copy ~/.zshenv                              zshrc
-copy ~/.zsh/aliases.zsh                     zshrc
-copy ~/.zsh/cli-commands.sh                 zshrc
-copy ~/.zsh/functions.zsh                   zshrc
-copy ~/.Xresources                          xresources
-copy ~/.vimrc                               vim
-copy ~/.config/nvim                         .
-copy ~/.config/rofi                         .
-copy ~/.config/polybar                      .
-copy ~/.config/awesome                      .
-copy ~/.config/gtk-3.0/settings.ini         gtk
-copy ~/.config/spicetify/config-xpui.ini    spicetify
-copy ~/.config/neofetch/config.conf         neofetch
-copy /usr/share/fonts                       .
+rsync -a ~/Scripts/*                            Scripts/
+rsync -a ~/.zshrc                               zshrc/
+rsync -a ~/.zshenv                              zshrc/
+rsync -a ~/.zsh/aliases.zsh                     zshrc/
+rsync -a ~/.zsh/cli-commands.sh                 zshrc/
+rsync -a ~/.zsh/functions.zsh                   zshrc/
+rsync -a ~/.Xresources                          xresources/
+rsync -a ~/.vimrc                               vim/
+rsync -a ~/.config/nvim/*                       nvim/
+rsync -a ~/.config/vimium/*                     vimium/
+rsync -a ~/.config/rofi/*                       rofi/
+rsync -a ~/.config/polybar/*                    polybar/
+rsync -a ~/.config/awesome/*                    awesome/
+rsync -a ~/.config/gtk-3.0/settings.ini         gtk/
+rsync -a ~/.config/spicetify/config-xpui.ini    spicetify/
+rsync -a ~/.config/neofetch/config.conf         neofetch/
+rsync -a ~/.oh-my-zsh/completions/*             omz-completions/
+rsync -a /usr/share/fonts/*                     fonts/
 
 # ansi codes
 col0="\e[0;39m"     # normal
