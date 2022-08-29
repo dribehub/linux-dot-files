@@ -1,9 +1,9 @@
 #!/bin/sh
 
 cd $HOME/Repos/dot-files
-
 l_HOME=home/dribe
 l_CONF=home/dribe/.config
+
 rsync -a /usr/share/fonts                       usr/share/
 rsync -a ~/Scripts                              $l_HOME/
 rsync -a ~/.zshrc                               $l_HOME/
@@ -11,17 +11,19 @@ rsync -a ~/.zshenv                              $l_HOME/
 rsync -a ~/.zsh/aliases.zsh                     $l_HOME/.zsh/
 rsync -a ~/.zsh/cli-commands.sh                 $l_HOME/.zsh/
 rsync -a ~/.zsh/functions.zsh                   $l_HOME/.zsh/
-rsync -a ~/.oh-my-zsh/completions/              $l_HOME/.oh-my-zsh/
-rsync -a ~/.Xresources                          $l_HOME/
+rsync -a ~/.oh-my-zsh/completions               $l_HOME/.oh-my-zsh/
 rsync -a ~/.vimrc                               $l_HOME/
-rsync -a ~/.config/nvim                         $l_CONF/
-rsync -a ~/.config/vimium                       $l_CONF/
-rsync -a ~/.config/rofi                         $l_CONF/
-rsync -a ~/.config/polybar                      $l_CONF/
+rsync -a ~/.Xresources                          $l_HOME/
+
 rsync -a ~/.config/awesome                      $l_CONF/
 rsync -a ~/.config/gtk-3.0/settings.ini         $l_CONF/gtk-3.0/
-rsync -a ~/.config/spicetify/config-xpui.ini    $l_CONF/spicetify/
 rsync -a ~/.config/neofetch/config.conf         $l_CONF/neofetch/
+rsync -a ~/.config/nvim                         $l_CONF/
+rsync -a ~/.config/polybar                      $l_CONF/
+rsync -a ~/.config/rofi                         $l_CONF/
+rsync -a ~/.config/spicetify/config-xpui.ini    $l_CONF/spicetify/
+rsync -a ~/.config/vimium                       $l_CONF/
+rsync -a ~/.config/xfce4/terminal               $l_CONF/xfce4/
 
 # ansi codes
 col0="\e[0;39m"     # normal
