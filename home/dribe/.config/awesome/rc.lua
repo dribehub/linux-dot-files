@@ -620,8 +620,9 @@ end
 -- {{{ Autostart
     shell("nitrogen --restore")
     shell("polybar main")
---    shell("polybar top")
---    shell("polybar bottom")
---    shell("picom")
---    shell("~/scripts/init.sh")
+    shell("picom -D 5 -o 0 -I 0.05 -O 0.05")
+                 --fade-delta=5 
+                      --shadow-opacity=0 
+                           --fade-in-step=0.05 
+                                   --fade-out-step=0.05
 -- }}}
