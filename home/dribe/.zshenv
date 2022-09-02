@@ -1,5 +1,5 @@
 # default variables
-EDITOR="/usr/bin/nvim"
+EDITOR="$HOME/.local/bin/lvim" #/usr/bin/nvim
 TERMINAL="/usr/bin/alacritty"
 BROWSER="/usr/bin/firefox"
 WINDOWS="/run/media/dribe/Windows 10/Users/User/"

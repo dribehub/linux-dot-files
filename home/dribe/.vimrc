@@ -50,5 +50,5 @@ colorscheme nord " set colorscheme
     nmap <leader>< bi<<ESC>ea><ESC>
     nmap <leader>div ysiw<div>
 " Move between Vimdows
-    nmap <space> <C-w>
+"    nmap <space> <C-w>
 

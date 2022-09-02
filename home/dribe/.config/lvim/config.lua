@@ -1,3 +1,4 @@
+vim.cmd("source ~/.vimrc")
 --[[
 lvim is the global options object
 
