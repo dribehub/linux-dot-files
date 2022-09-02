@@ -19,9 +19,11 @@ rsync -a /$BASEDIR/.Xresources                  $BASEDIR/
 BASEDIR=home/dribe/.config # personal configs
 rsync -a /$BASEDIR/awesome                      $BASEDIR/
 rsync -a /$BASEDIR/gtk-3.0                      $BASEDIR/
+rsync -a /$BASEDIR/lvim                         $BASEDIR/
 rsync -a /$BASEDIR/neofetch/config.conf         $BASEDIR/neofetch/
 rsync -a /$BASEDIR/nvim                         $BASEDIR/
 rsync -a /$BASEDIR/polybar                      $BASEDIR/
+rsync -a /$BASEDIR/ranger                       $BASEDIR/
 rsync -a /$BASEDIR/rofi                         $BASEDIR/
 rsync -a /$BASEDIR/spicetify/config-xpui.ini    $BASEDIR/spicetify/
 rsync -a /$BASEDIR/vimium                       $BASEDIR/

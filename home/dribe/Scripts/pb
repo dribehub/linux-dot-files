@@ -6,7 +6,7 @@ case $1 in
     (completions|comp)  $EDITOR $HOME/.oh-my-zsh/completions/_pb;;
     (colors|col)        $EDITOR $BASEDIR/colors.ini;;
     (config|conf)       $EDITOR $BASEDIR/config.ini;;
-    (fonts|font)        $EDITOR $BASEDIR/config.ini;;
+    (fonts|font)        $EDITOR $BASEDIR/fonts.ini;;
     
     (modules|module|mod|m|-m) case $2 in
         (battery)                   $EDITOR $BASEDIR/modules/battery.ini;;

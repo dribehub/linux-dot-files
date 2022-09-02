@@ -1,4 +1,5 @@
 configuration {
+/*  window run drun windowcd ssh combi keys filebrowser emoji */
 	modi: 						"window,emoji,run,drun";
 /*  font: 						"Source Code Pro 11";*/
 	font: 						"Jetbrains Mono 11";

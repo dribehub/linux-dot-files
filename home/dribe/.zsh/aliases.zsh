@@ -22,13 +22,7 @@ alias brightness="xrandr --output eDP-1 --brightness"
 alias     aliases="$EDITOR $ZSHRC/aliases.zsh"
 alias        funx="$EDITOR $ZSHRC/functions.zsh"
 alias    funstuff="$EDITOR $ZSHRC/cli-commands.sh"
-alias       zshrc="$EDITOR $HOME/.zshrc"
 alias      zshenv="$EDITOR $HOME/.zshenv"
-alias       vimrc="$EDITOR $HOME/.vimrc"
-alias      nvimrc="$EDITOR $HOME/.config/nvim/init.vim"
-alias   awesomerc="$EDITOR $HOME/.config/awesome/rc.lua"
-alias alacrittyrc="$EDITOR $HOME/.config/alacritty/alacritty.yml"
-alias       udfrc="$EDITOR $HOME/Scripts/update-dot-files"
 
 # default command options
 alias        rm="rm -I"
