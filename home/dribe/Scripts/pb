@@ -13,7 +13,8 @@ case $1 in
         (bluetooth)                 $EDITOR $BASEDIR/modules/bluetooth.ini;;
         (cpu)                       $EDITOR $BASEDIR/modules/cpu.ini;;
         (date|time)                 $EDITOR $BASEDIR/modules/date.ini;;
-        (filesystem|fs)             $EDITOR $BASEDIR/modules/filesystem.ini;;
+        (fs-root)                   $EDITOR $BASEDIR/modules/fs-root.ini;;
+        (fs-home)                   $EDITOR $BASEDIR/modules/fs-home.ini;;
         (memory|ram)                $EDITOR $BASEDIR/modules/memory.ini;;
         (mic-volume|mic)            $EDITOR $BASEDIR/modules/mic-volume.ini;;
         (network|wifi)              $EDITOR $BASEDIR/modules/network.ini;;
@@ -35,6 +36,7 @@ case $1 in
         (spotify)  $EDITOR $BASEDIR/modules/dock/spotify-dock.ini;;
         (telegram) $EDITOR $BASEDIR/modules/dock/telegram-dock.ini;;
         (whatsapp) $EDITOR $BASEDIR/modules/dock/whatsapp-dock.ini;;
+        (code)     $EDITOR $BASEDIR/modules/dock/code-dock.ini;;
         ('') print -P "You must specify the dock application";;
         (*) print -P "Invalid dock application: %F{9}$2%F{-1}";;
     esac;;

@@ -23,13 +23,13 @@ _pb() {
         (*)
             case $words[1] in
                 (modules|module|mod|m|-m)
-                    local m_args=(battery bluetooth cpu date filesystem
-                    memory mic-volume network poweroff pulseaudio restart
-                    xkeyboard xwindow xworkspaces)
+                    local m_args=(battery bluetooth cpu date fs-root 
+                    fs-home memory mic-volume network poweroff pulseaudio
+                    restart xkeyboard xwindow xworkspaces)
                     _describe -t output 'Current modules' m_args;;
                 (dock|apps|d|-d)
-                    local d_args=(discord firefox intellij nicotine spotify
-                    telegram whatsapp)
+                    local d_args=(discord firefox intellij nicotine
+                    spotify telegram whatsapp)
                     _describe -t output 'Current dock modules' d_args;;
                 (spotify|s|-s)
                     local s_args=(next playpause previous spotify)
