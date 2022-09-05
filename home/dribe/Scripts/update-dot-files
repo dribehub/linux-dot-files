@@ -1,34 +1,35 @@
 #!/bin/sh
 
+alias copy="rsync -a --del"
 cd ~/Repos/dot-files
 
 BASEDIR=usr/share # system configs
-rsync -a /$BASEDIR/fonts                     $BASEDIR/
+copy /$BASEDIR/fonts                        $BASEDIR/
 
 BASEDIR=home/dribe # global configs
-rsync -a /$BASEDIR/Scripts                   $BASEDIR/
-rsync -a /$BASEDIR/.vimrc                    $BASEDIR/
-rsync -a /$BASEDIR/.Xresources               $BASEDIR/
-rsync -a /$BASEDIR/.zshrc                    $BASEDIR/
-rsync -a /$BASEDIR/.zshenv                   $BASEDIR/
-rsync -a /$BASEDIR/.zsh/aliases.zsh          $BASEDIR/.zsh/
-rsync -a /$BASEDIR/.zsh/cli-commands.sh      $BASEDIR/.zsh/
-rsync -a /$BASEDIR/.zsh/functions.zsh        $BASEDIR/.zsh/
-rsync -a /$BASEDIR/.oh-my-zsh/completions    $BASEDIR/.oh-my-zsh/
+copy /$BASEDIR/Scripts                      $BASEDIR/
+copy /$BASEDIR/.vimrc                       $BASEDIR/
+copy /$BASEDIR/.Xresources                  $BASEDIR/
+copy /$BASEDIR/.zshrc                       $BASEDIR/
+copy /$BASEDIR/.zshenv                      $BASEDIR/
+copy /$BASEDIR/.zsh/aliases.zsh             $BASEDIR/.zsh/
+copy /$BASEDIR/.zsh/cli-commands.sh         $BASEDIR/.zsh/
+copy /$BASEDIR/.zsh/functions.zsh           $BASEDIR/.zsh/
+copy /$BASEDIR/.oh-my-zsh/completions       $BASEDIR/.oh-my-zsh/
 
 BASEDIR=home/dribe/.config # personal configs
-rsync -a /$BASEDIR/awesome                   $BASEDIR/
-rsync -a /$BASEDIR/firefox                   $BASEDIR/
-rsync -a /$BASEDIR/gtk-3.0                   $BASEDIR/
-rsync -a /$BASEDIR/lvim                      $BASEDIR/
-rsync -a /$BASEDIR/neofetch/config.conf      $BASEDIR/neofetch/
-rsync -a /$BASEDIR/nvim                      $BASEDIR/
-rsync -a /$BASEDIR/polybar                   $BASEDIR/
-rsync -a /$BASEDIR/ranger                    $BASEDIR/
-rsync -a /$BASEDIR/rofi                      $BASEDIR/
-rsync -a /$BASEDIR/spicetify/config-xpui.ini $BASEDIR/spicetify/
-rsync -a /$BASEDIR/vimium                    $BASEDIR/
-rsync -a /$BASEDIR/xfce4/terminal            $BASEDIR/xfce4/
+copy /$BASEDIR/awesome                      $BASEDIR/
+copy /$BASEDIR/firefox                      $BASEDIR/
+copy /$BASEDIR/gtk-3.0                      $BASEDIR/
+copy /$BASEDIR/lvim                         $BASEDIR/
+copy /$BASEDIR/neofetch/config.conf         $BASEDIR/neofetch/
+copy /$BASEDIR/nvim                         $BASEDIR/
+copy /$BASEDIR/polybar                      $BASEDIR/
+copy /$BASEDIR/ranger                       $BASEDIR/
+copy /$BASEDIR/rofi                         $BASEDIR/
+copy /$BASEDIR/spicetify/config-xpui.ini    $BASEDIR/spicetify/
+copy /$BASEDIR/vimium                       $BASEDIR/
+copy /$BASEDIR/xfce4/terminal               $BASEDIR/xfce4/
 
 # ansi codes
 col0="\e[0;39m"     # normal
@@ -52,13 +53,14 @@ fi
 
 opt=0
 while [[ $opt != [nN6] && $opt != 'push' ]]; do
-    echo -e "${col1}1${col0}) ${col2}log ${col0}commit history"
-    echo -e "${col1}2${col0}) ${col0}show ${col2}diff${col0}erences"
-    echo -e "${col1}3${col0}) ${col2}show ${col0}last commit"
-    echo -e "${col1}4${col0}) ${col0}show git ${col2}status${col0}"
-    echo -e "${col1}5${col0}) ${col2}commit ${col0}latest changes"
-    echo -e "${col1}6${col0}) ${col2}push ${col0}latest commits"
-    echo -ne "${col2}n${col0}/${col2}N ${col0}to cancel: ${col2}"
+    echo -ne "${col1}1${col0}) ${col2}log ${col0}commit history\n" \
+    "\b${col1}2${col0}) ${col0}show ${col2}diff${col0}erences\n" \
+    "\b${col1}3${col0}) ${col2}show ${col0}last commit\n" \
+    "\b${col1}4${col0}) ${col0}show git ${col2}status${col0}\n" \
+    "\b${col1}5${col0}) ${col2}commit ${col0}latest changes\n" \
+    "\b${col1}6${col0}) ${col2}push ${col0}latest commits\n" \
+    "\b${col2}n${col0}/${col2}N ${col0}to cancel: ${col2}"
+    
     read opt && echo -e "${col0}";
     case $opt in
         1|log) git log;;
