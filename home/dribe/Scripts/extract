@@ -2,7 +2,9 @@
 
 # Extract compressed files
 
-if [ -f $1 ]; then
+if [ $# -eq 0 ]; then
+    echo "File path must be supplied!" >&2
+elif [ -f $1 ]; then
     case $1 in
         *.tar)      sudo tar xf $1;;
         *.tar.bz2)  sudo tar xjf $1;;
@@ -15,8 +17,8 @@ if [ -f $1 ]; then
         *.Z)        sudo uncompress $1;;
         *.rar)      sudo unrar x $1;;
         *.zip)      sudo unzip $1;;
-        *)          print -P "Invalid format: %F{9}.$(echo "${1##*\.}")";;
+        *)          print -P "Invalid format: %F{9}.$(echo "${1##*\.}")" >&2;;
     esac
 else
-    print -P "Could not find file: %F{9}$1"
+    print -P "Could not find file: %F{9}$1" >&2
 fi

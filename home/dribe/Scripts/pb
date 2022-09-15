@@ -24,8 +24,8 @@ case $1 in
         (xkeyboard|keyboard|layout) $EDITOR $BASEDIR/modules/xkeyboard.ini;;
         (xwindow|window)            $EDITOR $BASEDIR/modules/xwindow.ini;;
         (xworkspaces|workspaces)    $EDITOR $BASEDIR/modules/xworkspaces.ini;;
-        ('') print -P "You must specify the module name";;
-        (*) print -P "Invalid module name: %F{9}$2%F{-1}";;
+        ('') print -P "You must specify the module name" >&2;;
+        (*) print -P "Invalid module name: %F{9}$2%F{-1}" >&2;;
     esac;;
     
     (dock|apps|d|-d) case $2 in
@@ -37,27 +37,26 @@ case $1 in
         (telegram) $EDITOR $BASEDIR/modules/dock/telegram-dock.ini;;
         (whatsapp) $EDITOR $BASEDIR/modules/dock/whatsapp-dock.ini;;
         (code)     $EDITOR $BASEDIR/modules/dock/code-dock.ini;;
-        ('') print -P "You must specify the dock application";;
-        (*) print -P "Invalid dock application: %F{9}$2%F{-1}";;
+        ('') print -P "You must specify the dock application" >&2;;
+        (*) print -P "Invalid dock application: %F{9}$2%F{-1}" >&2;;
     esac;;
     
     (spotify|s|-s) case $2 in
-        (next)              $EDITOR $BASEDIR/modules/spotify/next.ini;;
-        (playpause|play)    $EDITOR $BASEDIR/modules/spotify/playpause.ini;;
-        (previous|prev)     $EDITOR $BASEDIR/modules/spotify/previous.ini;;
-        (spotify|playback)  $EDITOR $BASEDIR/modules/spotify/spotify.ini;;
-        ('') print -P "You must specify the module name";;
-        (*) print -P "Invalid spotify module: %F{9}$2%F{-1}";;
+        (next)                  $EDITOR $BASEDIR/modules/spotify/next.ini;;
+        (playpause|play)        $EDITOR $BASEDIR/modules/spotify/playpause.ini;;
+        (previous|prev)         $EDITOR $BASEDIR/modules/spotify/previous.ini;;
+        (spotify|playback|'')   $EDITOR $BASEDIR/modules/spotify/spotify.ini;;
+        (*) print -P "Invalid spotify module: %F{9}$2%F{-1}" >&2;;
     esac;;
     
     (bar|b|-b) case $2 in
         (top)        $EDITOR $BASEDIR/bars/top.ini;;
         (bottom)     $EDITOR $BASEDIR/bars/bottom.ini;;
         (main)       $EDITOR $BASEDIR/bars/main.ini;;
-        ('') print -P "You must specify the bar name";;
-        (*) print -P "Invalid bar name: %F{9}$2%F{-1}";;
+        ('') print -P "You must specify the bar name" >&2;;
+        (*) print -P "Invalid bar name: %F{9}$2%F{-1}" >&2;;
     esac;;
 
-    ('') print -P "You must specify the config argument";;
-    (*) print -P "Invalid argument: %F{9}$1%F{-1}";;
+    ('') print -P "You must specify the config argument" >&2;;
+    (*) print -P "Invalid argument: %F{9}$1%F{-1}" >&2;;
 esac

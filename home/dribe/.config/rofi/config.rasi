@@ -4,7 +4,7 @@ configuration {
 /*  font: 						"Source Code Pro 11";*/
 	font: 						"Jetbrains Mono 11";
 /*	location: 					0;*/
-	yoffset: 					-250;
+/*  yoffset: 					-250; */
 /*	xoffset: 					0;*/
 	fixed-num-lines: 			false;
 	show-icons: 				true;

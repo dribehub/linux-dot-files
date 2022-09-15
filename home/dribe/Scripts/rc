@@ -1,14 +1,15 @@
 #!/bin/sh
 
 case $1 in
-    udf)          $EDITOR $HOME/Scripts/update-dot-files;;
-    zsh)          $EDITOR $HOME/.zshrc;;
-    vim)          $EDITOR $HOME/.vimrc;;
-    nvim)         $EDITOR $HOME/.config/nvim/init.vim;;
-    lvim)         $EDITOR $HOME/.config/lvim/config.lua;;
-    awesome|awm)  $EDITOR $HOME/.config/awesome/rc.lua;;
-    alacritty)    $EDITOR $HOME/.config/alacritty/alacritty.yml;;
-    ranger)       $EDITOR $HOME/.config/ranger/rc.conf;;
-    neofetch|nf)  $EDITOR $HOME/.config/neofetch/config.conf;;
+    udf)            $EDITOR $HOME/Scripts/update-dot-files;;
+    zsh)            $EDITOR $HOME/.zshrc;;
+    vim)            $EDITOR $HOME/.vimrc;;
+    nvim)           $EDITOR $HOME/.config/nvim/init.vim;;
+    lvim)           $EDITOR $HOME/.config/lvim/config.lua;;
+    awesome|awm)    $EDITOR $HOME/.config/awesome/rc.lua;;
+    rofi)           $EDITOR $HOME/.config/rofi/config.rasi;;
+    alacritty)      $EDITOR $HOME/.config/alacritty/alacritty.yml;;
+    ranger)         $EDITOR $HOME/.config/ranger/rc.conf;;
+    neofetch|nf)    $EDITOR $HOME/.config/neofetch/config.conf;;
     *) echo -e "\e[1;31mInvalid argument!\e[0;39m"
 esac

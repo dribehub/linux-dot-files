@@ -366,6 +366,8 @@ globalkeys = gears.table.join(
 clientkeys = gears.table.join(
     awful.key({ win }, "f",
         function(c)
+            local opt = c.fullscreen and "on" or "off"
+            awful.util.spawn("/home/dribe/Scripts/toggle-polybar --" .. opt)
             c.fullscreen = not c.fullscreen
             c:raise()
         end,
